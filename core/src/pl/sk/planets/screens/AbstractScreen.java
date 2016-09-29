@@ -1,26 +1,25 @@
 package pl.sk.planets.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import pl.sk.planets.Planets;
 
-public abstract class AbstractScreen implements Screen{
+public abstract class AbstractScreen implements Screen,InputProcessor{
 	protected Planets game;
-	protected Stage stage;
-	private OrthographicCamera camera;
+	//protected Stage stage;
+	protected OrthographicCamera camera;
 	protected SpriteBatch spriteBatch;
 	public AbstractScreen(Planets game){
 		this.game = game;
 		createCamera();
-		stage = new Stage(new StretchViewport(Planets.WIDTH,Planets.HEIGHT,camera));
+		//stage = new Stage(new StretchViewport(Planets.WIDTH,Planets.HEIGHT,camera));
 		spriteBatch = new SpriteBatch();
-		Gdx.input.setInputProcessor(stage);
+		//Gdx.input.setInputProcessor(stage);
 	}
 	private void createCamera() {
 		camera = new OrthographicCamera();
@@ -66,6 +65,47 @@ public abstract class AbstractScreen implements Screen{
 	}
 	@Override
 	public void resize(int width, int height) {		
+	}
+	@Override
+	public boolean keyDown(int keycode) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean keyUp(int keycode) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean keyTyped(char character) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean mouseMoved(int screenX, int screenY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean scrolled(int amount) {
+		camera.zoom+= amount/25f;
+		camera.update();
+		return true;
 	}
 	
 }
