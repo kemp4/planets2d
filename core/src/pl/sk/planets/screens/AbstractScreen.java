@@ -4,15 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
 import pl.sk.planets.Planets;
+import pl.sk.planets.gameobjects.GameCamera;
 
 public abstract class AbstractScreen implements Screen,InputProcessor{
 	protected Planets game;
 	//protected Stage stage;
-	protected OrthographicCamera camera;
+	protected GameCamera camera;
 	protected SpriteBatch spriteBatch;
 	public AbstractScreen(Planets game){
 		this.game = game;
@@ -22,7 +23,7 @@ public abstract class AbstractScreen implements Screen,InputProcessor{
 		//Gdx.input.setInputProcessor(stage);
 	}
 	private void createCamera() {
-		camera = new OrthographicCamera();
+		camera = new GameCamera();
 		camera.setToOrtho(false, Planets.WIDTH, Planets.HEIGHT);
 		camera.update();	
 	}
@@ -98,7 +99,7 @@ public abstract class AbstractScreen implements Screen,InputProcessor{
 	}
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		// TODO Auto-generated method stub
+		camera.translateMouse(new Vector2(screenX,screenY));
 		return false;
 	}
 	@Override

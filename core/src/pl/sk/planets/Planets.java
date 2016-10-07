@@ -7,6 +7,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -31,6 +32,7 @@ public class Planets extends Game {
 	@Override
 	public void create() {
 		//World w = new World(new Vector2(0.0f, 0.0f),true);
+		manager = new AssetManager();
 		bodies = new ArrayList<JsonValue>();
 		readJson("notSoSimpleShape.json");
 		readJson("simpleShape.json");
@@ -41,8 +43,10 @@ public class Planets extends Game {
 
 	}
 
-	protected void loadAssets() {
-
+	public void loadAssets() {
+		manager.load("mouse.png",Texture.class);
+		manager.load("ss.png",Texture.class);
+		
 	}
 
 	public boolean isPaused() {
@@ -69,7 +73,6 @@ public class Planets extends Game {
 	}
 	
 
-	
 	
 
 	public void addBody(JsonValue root) {
