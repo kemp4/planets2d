@@ -8,14 +8,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 
@@ -24,7 +16,7 @@ import pl.sk.planets.screens.SplashScreen;
 public class Planets extends Game {
 	public final static String GAME_NAME = "planets";
 	public final static int WIDTH = 1200;
-	public final static int HEIGHT = 800;
+	public final static int HEIGHT = 500;
 	private boolean paused;
 	private AssetManager manager;
 	private List<JsonValue> bodies;

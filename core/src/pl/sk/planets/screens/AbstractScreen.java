@@ -5,7 +5,6 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 
 import pl.sk.planets.Planets;
 import pl.sk.planets.gameobjects.GameCamera;
@@ -99,7 +98,6 @@ public abstract class AbstractScreen implements Screen,InputProcessor{
 	}
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		camera.translateMouse(new Vector2(screenX,screenY));
 		return false;
 	}
 	@Override

@@ -7,7 +7,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -43,7 +42,7 @@ public class GamePlayScreen extends AbstractScreen {
 				.scale(new Vector2(1,1))
 				.bodyType("dynamic")
 				.build();
-		for (int i =0 ; i < 2000; i++){
+		for (int i =0 ; i < 200; i++){
 			float xgen =(float)Math.random()*200;
 			float ygen =(float)Math.random()*200;
 			float xscale =(float)Math.random()*6-3;
@@ -68,15 +67,15 @@ public class GamePlayScreen extends AbstractScreen {
 				.position(new Vector2(3,6))
 				.bodyType("static")
 				.build());
-				
+
 	}
 
 	@Override
 	public void render(float delta) {
 	
-		System.out.println(getMousePosInWorld());
-		System.out.println(camera.position);
-		System.out.println(camera.viewportHeight);
+		//System.out.println(getMousePosInWorld());
+		//System.out.println(camera.position);
+		//System.out.println(camera.viewportHeight);
 		
 		update();
 
@@ -121,7 +120,10 @@ public class GamePlayScreen extends AbstractScreen {
 		}
 		return true;
 	}
-	Vector3 getMousePosInWorld() {
-		 return (new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
-		}
+	@Override
+	public boolean mouseMoved(int screenX, int screenY) {
+		mouse.translateMouse(new Vector2(screenX,screenY));
+		return false;
+	}
+
 }
